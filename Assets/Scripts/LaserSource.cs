@@ -17,7 +17,7 @@ public class LaserSource : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+    
     void Update()
     {
         RaycastHit hit;

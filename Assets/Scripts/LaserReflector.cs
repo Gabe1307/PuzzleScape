@@ -71,8 +71,5 @@ public class LaserReflector : MonoBehaviour
         lr.positionCount = 0;
 
     }
-    private void OnMouseDown()
-    {
-        
-    }
+    
 }
