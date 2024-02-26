@@ -6,7 +6,7 @@ public class LaserReflector : MonoBehaviour
 {
     private Vector3 screenPoint;
     private Vector3 offset;
-    float rotationSpeed = 0.2f;
+    //float rotationSpeed = 0.2f;
     Vector3 position;
     Vector3 direction;
     LineRenderer lr;
