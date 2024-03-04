@@ -11,9 +11,17 @@ public class ThirdPersonMovement : MonoBehaviour
     public float speed = 6f;
     public Transform cam;
 
-    // Update is called once per frame
+
+
+   
     void Update()
     {
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
