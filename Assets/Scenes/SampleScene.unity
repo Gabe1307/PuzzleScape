@@ -708,11 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a3365631610774b859d25d0c1148f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientation: {fileID: 1237459818}
-  player: {fileID: 1951413873}
-  playerObj: {fileID: 826678221}
-  rb: {fileID: 0}
-  rotationSpeed: 7
 --- !u!114 &426881020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,6 +1420,7 @@ GameObject:
   - component: {fileID: 1038067353}
   - component: {fileID: 1038067352}
   - component: {fileID: 1038067351}
+  - component: {fileID: 1038067357}
   m_Layer: 0
   m_Name: LaserReflector
   m_TagString: Reflector
@@ -1622,6 +1618,53 @@ Transform:
   m_Father: {fileID: 380447044}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038067357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038067350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be039ad51ee124340b36392fe41e3161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressed:
+    m_Name: Pressed
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: d99c6c5a-7b4c-44b6-9cfc-8e3ad31309a1
+    m_Processors: 
+    m_Interactions: Press
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 9c1541eb-6630-40a8-b3f3-822ae2364504
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pressed
+      m_Flags: 0
+    m_Flags: 0
+  axis:
+    m_Name: Axis
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: d9bcdaa7-361e-4809-8487-4f9425e67fba
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d6e22b1f-ad48-4bd3-9db9-abdf14cea93e
+      m_Path: <Mouse>/delta
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Axis
+      m_Flags: 0
+    m_Flags: 0
+  speed: 0.1
 --- !u!1 &1237459817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,7 +2405,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798249515}
-  m_LocalRotation: {x: 0.11361019, y: 0.000000026930598, z: -0.000000003079529, w: 0.99352545}
+  m_LocalRotation: {x: 0.11361019, y: 0.000000026930596, z: -0.0000000030795289, w: 0.99352545}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
