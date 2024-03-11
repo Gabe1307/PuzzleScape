@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Rotatable : MonoBehaviour
+public class Rotatable : MonoBehaviour, IInteractable
 {
 
     [SerializeField] private InputAction pressed, axis;
@@ -14,7 +14,21 @@ public class Rotatable : MonoBehaviour
     private Transform cam;
     private Vector2 rotation;
 
+
     private bool rotateAllowed;
+
+    public void Interact()
+    {
+        Debug.Log(Random.Range(0, 100));
+
+    }
+
+    public void Interacted ()
+    {
+        rotateAllowed = !rotateAllowed;
+    }
+    
+    
     private void Awake()
     {
         cam = Camera.main.transform;
@@ -28,7 +42,7 @@ public class Rotatable : MonoBehaviour
     //coroutine to rotate 
     private IEnumerator Rotate()
     {
-        rotateAllowed = true;
+       
         while (rotateAllowed)
         {
             //apply rotattion 
