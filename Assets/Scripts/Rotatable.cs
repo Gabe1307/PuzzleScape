@@ -48,8 +48,9 @@ public class Rotatable : MonoBehaviour, IInteractable
             //apply rotattion 
             rotation *= speed;
             transform.Rotate(Vector3.up, rotation.x, Space.World);
-            transform.Rotate(-cam.right * (inverted ? -1: 1), rotation.y, Space.World) ;
+            transform.Rotate(transform.right * (inverted ? -1 : 1), rotation.y, Space.World) ;
             yield return null;
         }
     }
 }
+
