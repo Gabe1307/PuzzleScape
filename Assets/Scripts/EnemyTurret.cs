@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine;
+
 public class EnemyTurret : MonoBehaviour
 {
-    public Transform player; 
-    public Transform laserPoint; 
-    public LineRenderer laserLine; 
+    public Transform player;
+    public Transform laserPoint;
+    public LineRenderer laserLine;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
 
-    public float rotationSpeed = 5f; 
+    public float rotationSpeed = 5f;
     public float maxDistance = 10f;
-    public LayerMask playerLayer; 
+    public LayerMask playerLayer;
+    public float bulletInterval = 3f; // Time interval between bullet shots
+
+    private bool playerInRange = false;
 
     private void Start()
     {
@@ -33,11 +40,13 @@ public class EnemyTurret : MonoBehaviour
         // Check if the player is within the turret's detection range
         if (Vector3.Distance(transform.position, player.position) <= maxDistance)
         {
+            playerInRange = true;
             // Fire the laser at the player
             ShootLaser();
         }
         else
         {
+            playerInRange = false;
             // If the player is out of range, disable the laser
             laserLine.enabled = false;
         }
@@ -62,11 +71,28 @@ public class EnemyTurret : MonoBehaviour
             // If the laser hits the player, set the endpoint of the laser to the hit point
             laserLine.SetPosition(1, hit.point);
             // Here you can add code to deal damage to the player or apply other effects
+
+            // Check if it's time to shoot a bullet
+            if (!IsInvoking("ShootBullet") && playerInRange)
+            {
+                InvokeRepeating("ShootBullet", 0f, bulletInterval);
+            }
         }
         else
         {
             // If the laser doesn't hit anything, set the endpoint to a point far away
             laserLine.SetPosition(1, laserPoint.position + direction * 100f);
+            // Cancel the bullet shooting if the player is out of range or the laser doesn't hit the player
+            if (IsInvoking("ShootBullet"))
+            {
+                CancelInvoke("ShootBullet");
+            }
         }
+    }
+
+    void ShootBullet()
+    {
+        // Instantiate a bullet prefab at the bullet spawn point
+        Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
     }
 }

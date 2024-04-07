@@ -14,6 +14,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public float sprintSpeed = 10f;
     private float currentSpeed;
 
+    public float jumpHeight = 0.3f;
+    private bool isJumping = false;
+
     private void Start()
     {
         currentSpeed = speed; // Set the initial speed
@@ -38,15 +41,27 @@ public class ThirdPersonMovement : MonoBehaviour
             currentSpeed = speed;
         }
 
+        if (controller.isGrounded)
+        {
+            isJumping = false;
+        }
+
+        if (Input.GetButtonDown("Jump") && !isJumping)
+        {
+            isJumping = true;
+            controller.Move(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y));
+        }
+
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+           transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
-            controller.Move(Vector3.down * Time.deltaTime * 10);
+           controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
+           // controller.Move(Vector3.down * Time.deltaTime * 10);
         }
     }
 }
+
