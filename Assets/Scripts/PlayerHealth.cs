@@ -9,16 +9,16 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        // Example: Check if the player's health is zero and perform game over actions
+        
         if (currentHealth <= 0)
         {
             Die();
@@ -43,10 +43,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 
-    // Example: Perform actions when player dies
+    
     void Die()
     {
-        // Add your game over logic here, such as restarting the level or showing a game over screen.
+        
         Debug.Log("Player died.");
     }
 }

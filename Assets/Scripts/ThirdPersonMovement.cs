@@ -60,7 +60,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
            controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
-           // controller.Move(Vector3.down * Time.deltaTime * 10);
+            controller.Move(Vector3.down * Time.deltaTime * 10);
         }
     }
 }
