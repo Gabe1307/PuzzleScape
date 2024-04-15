@@ -17,9 +17,12 @@ public class ThirdPersonMovement : MonoBehaviour
     public float jumpHeight = 0.3f;
     private bool isJumping = false;
 
+    Animator anim;
+
     private void Start()
     {
         currentSpeed = speed; // Set the initial speed
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -35,6 +38,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             currentSpeed = sprintSpeed;
+            anim.SetFloat("Blend", 1f);
         }
         else
         {
@@ -61,7 +65,17 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
            controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
             controller.Move(Vector3.down * Time.deltaTime * 10);
+
+            if(currentSpeed == speed)
+            {
+                anim.SetFloat("Blend", 0.5f);
+            }
         }
+        if(direction.magnitude < 0.1f)
+        {
+            anim.SetFloat("Blend", 0f);
+        }
+
     }
 }
 
