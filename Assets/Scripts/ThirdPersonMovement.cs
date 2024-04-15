@@ -53,7 +53,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             isJumping = true;
-            controller.Move(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y));
+            
         }
 
         if (direction.magnitude >= 0.1f)
