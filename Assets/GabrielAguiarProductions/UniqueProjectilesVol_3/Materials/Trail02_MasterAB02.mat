@@ -34,8 +34,7 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  stringTagMap: {}
   disabledShaderPasses:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
@@ -175,6 +174,8 @@ Material:
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _Parallax: 0.02
+    - _QueueControl: 1
+    - _QueueOffset: 0
     - _RenderQueueType: 4
     - _SmoothnessTextureChannel: 0
     - _Softness: 0

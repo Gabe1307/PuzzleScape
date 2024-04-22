@@ -45,7 +45,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 3d807a1f20f371b46a158a4bd8fe5609, type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0.12, y: 0.35}
-    m_TimeScale: 1
+    m_TimeScale: 1.8
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
@@ -78,7 +78,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
