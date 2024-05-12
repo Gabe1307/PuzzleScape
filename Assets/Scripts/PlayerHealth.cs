@@ -38,9 +38,10 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount;
-
-        // Ensure health doesn't exceed maxHealth
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        //OnHealthChanged?.Invoke(currentHealth);
+
+        Debug.Log("Healed: " + amount + " points.");
     }
 
     
