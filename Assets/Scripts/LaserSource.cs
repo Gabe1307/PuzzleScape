@@ -8,6 +8,8 @@ public class LaserSource : MonoBehaviour
     Vector3 direction;
     LineRenderer lr;
     GameObject tempReflector;
+    public LayerMask reflectLayer;
+
     void Start()
     {
         lr = gameObject.GetComponent<LineRenderer>();
@@ -21,7 +23,7 @@ public class LaserSource : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if(Physics.Raycast(laserStartPoint.position,direction,out hit, Mathf.Infinity))
+        if(Physics.Raycast(laserStartPoint.position,direction,out hit, Mathf.Infinity, reflectLayer))
         {
             if(hit.collider.CompareTag("Reflector"))
             {

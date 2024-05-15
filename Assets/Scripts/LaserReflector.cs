@@ -20,6 +20,8 @@ public class LaserReflector : MonoBehaviour
     // Flag indicating if the reflector is currently open
     public bool isOpen;
 
+    public LayerMask reflectLayer;
+
     // Reference to the reflector that the laser has bounced off from
     GameObject tempReflector;
 
@@ -28,6 +30,7 @@ public class LaserReflector : MonoBehaviour
         // Initialize variables and components
         isOpen = false;
         lr = GetComponent<LineRenderer>();
+        CloseRay();
     }
 
     void Update()
@@ -40,7 +43,7 @@ public class LaserReflector : MonoBehaviour
 
             // Cast a ray in the direction of reflection
             RaycastHit hit;
-            if (Physics.Raycast(position, direction, out hit, Mathf.Infinity))
+            if (Physics.Raycast(position, direction, out hit, Mathf.Infinity, reflectLayer))
             {
                 // If the ray hits another reflector, recursively open its ray
                 if (hit.collider.CompareTag("Reflector"))
@@ -60,13 +63,17 @@ public class LaserReflector : MonoBehaviour
                     tempReflector.GetComponent<LaserReflector>().CloseRay();
                     tempReflector = null;
                 }
-                lr.SetPosition(1, direction * 0);
+                lr.SetPosition(1, direction * 100);
             }
         }
         else
         {
             // If the reflector is closed, deactivate the LineRenderer
-            CloseRay();
+            if (tempReflector)
+            {
+                tempReflector.GetComponent<LaserReflector>().CloseRay();
+                tempReflector = null;
+            }
         }
     }
 
@@ -83,6 +90,12 @@ public class LaserReflector : MonoBehaviour
     {
         isOpen = false;
         lr.positionCount = 0; // Hide the LineRenderer
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(position, 0.5f);
     }
 }
 
