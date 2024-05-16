@@ -5,6 +5,7 @@ using UnityEngine;
 
 
 public class LaserReflector : MonoBehaviour
+
 {
     // Variables for handling mouse input
     private Vector3 screenPoint;
@@ -57,13 +58,13 @@ public class LaserReflector : MonoBehaviour
             }
             else
             {
-                // If the ray doesn't hit anything, set the endpoint to a point 
+                // If the ray doesn't hit anything, set the endpoint to a distant point
                 if (tempReflector)
                 {
                     tempReflector.GetComponent<LaserReflector>().CloseRay();
                     tempReflector = null;
                 }
-                lr.SetPosition(1, direction * 100);
+                lr.SetPosition(1, position + direction * 100); // Adjust this value as needed
             }
         }
         else
@@ -74,6 +75,7 @@ public class LaserReflector : MonoBehaviour
                 tempReflector.GetComponent<LaserReflector>().CloseRay();
                 tempReflector = null;
             }
+            lr.positionCount = 0; // Hide the LineRenderer
         }
     }
 
@@ -83,6 +85,7 @@ public class LaserReflector : MonoBehaviour
         isOpen = true;
         position = pos;
         direction = dir;
+        Update();
     }
 
     // Close the reflector's ray
@@ -94,8 +97,12 @@ public class LaserReflector : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(position, 0.5f);
+        if (isOpen)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(position, 0.5f);
+            Gizmos.DrawLine(position, position + direction * 10); // Adjust length for visualization
+        }
     }
 }
 
