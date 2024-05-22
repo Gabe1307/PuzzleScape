@@ -12,6 +12,7 @@ public class EnemyTurret : MonoBehaviour
     public LineRenderer laserLine;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
+    public AudioSource playSound;
 
     public float rotationSpeed = 5f;
     public float maxDistance = 10f;
@@ -51,6 +52,12 @@ public class EnemyTurret : MonoBehaviour
         if (playerInRange)
         {
             ShootLaser();
+            if (!playSound.isPlaying)
+            {
+                playSound.Play();
+
+            }
+            
         }
         else
         {
@@ -58,6 +65,7 @@ public class EnemyTurret : MonoBehaviour
             laserLine.enabled = false;
             // Stop shooting if player is out of range
             StopShooting();
+            playSound.Stop();
         }
     }
 

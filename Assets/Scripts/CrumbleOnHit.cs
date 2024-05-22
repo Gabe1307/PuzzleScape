@@ -17,6 +17,8 @@ public class CrumbleOnHit : MonoBehaviour
     // Prefab of a single piece
     public GameObject piecePrefab;
 
+    public AudioSource playSound;
+
     // Called when the object collides with another collider
     private void OnCollisionEnter(Collision collision)
     {
@@ -49,6 +51,8 @@ public class CrumbleOnHit : MonoBehaviour
 
         // Destroy the original object
         Destroy(gameObject);
+        
+
     }
 }
 
