@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e895b1fa325c2ce40b92dd37cd7839d1
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - FANTASY MAGIST
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ed1303bb8f78d5c43a5917a360230af3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
