@@ -2,61 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-interface IInteractable
+public interface IInteractable
 {
-    public void Interact();
+    void Interact();
 }
-
 
 
 public class Interactor : MonoBehaviour
 {
     public Transform InteractorSource;
-    public float InteractRange;
-    private bool Interacting;
+    public float InteractRange = 2.0f; // Set a default interaction range
     private Rotatable selectedLaser;
+    private IInteractable interactObj;
+    private bool isInteracting;
+
     void Start()
     {
-        
+        selectedLaser = null;
+        interactObj = null;
+        isInteracting = false;
     }
 
-    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        // Check for start interaction
+        if (Input.GetKeyDown(KeyCode.E) && !isInteracting)
         {
-            if (Interacting == false)
-            {
-                // if we are not interacting with an object we then start interacting with it.
-                Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-                if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
-                {
-                    if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-                    {
-                        // enables the bool to rotate the selected object.
-                        interactObj.Interact();
-                        selectedLaser = hitInfo.collider.gameObject.GetComponent<Rotatable>();
-                        selectedLaser.Interacted();
+            StartInteraction();
+        }
 
-
-
-                    }
-
-                }
-
-
-            }
-            else
-            {
-                // if we are interacting and we have pressed E the bool in rotatable is set back to false. 
-                // we also set the refrence to null so when u press e it doesnt have the refrence anymore.
-                selectedLaser.Interacted();
-                selectedLaser = null;
-            }   
-            
-            
-
+        // Check for stop interaction
+        if (Input.GetKeyUp(KeyCode.E) && isInteracting)
+        {
+            StopInteracting();
         }
     }
+
+    void FixedUpdate()
+    {
+        // Check for out of range condition during interaction
+        if (isInteracting && selectedLaser != null)
+        {
+            if (Vector3.Distance(InteractorSource.position, selectedLaser.transform.position) > InteractRange)
+            {
+                StopInteracting();
+            }
+        }
+    }
+
+    void StartInteraction()
+    {
+        // Try to start interaction if not currently interacting
+        Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+        if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+        {
+            if (hitInfo.collider.gameObject.TryGetComponent(out interactObj))
+            {
+                selectedLaser = hitInfo.collider.gameObject.GetComponent<Rotatable>();
+                if (selectedLaser != null)
+                {
+                    interactObj.Interact();
+                    selectedLaser.Interacted();
+                    isInteracting = true;
+                    Debug.Log("Started interacting with: " + hitInfo.collider.gameObject.name);
+                }
+            }
+        }
+    }
+
+    void StopInteracting()
+    {
+        if (selectedLaser != null)
+        {
+            selectedLaser.Interacted();
+            Debug.Log("Stopped interacting with: " + selectedLaser.gameObject.name);
+            selectedLaser = null;
+        }
+        interactObj = null;
+        isInteracting = false;
+    }
 }
+
