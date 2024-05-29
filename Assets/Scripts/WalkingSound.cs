@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
+
 public class WalkingSound : MonoBehaviour
 {
     public List<AudioClip> WalkSounds;
     public AudioSource audioSource;
 
-    public int pos;
+    private int currentSoundIndex = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
+    
 
     public void PlaySound()
     {
-        pos = (int)Mathf.Floor(Random.Range(0, WalkSounds.Count));
-        audioSource.PlayOneShot(WalkSounds[pos]);
+        if (WalkSounds.Count == 0 || audioSource == null)
+        {
+            Debug.LogWarning("No walking sounds");
+            return;
+        }
+
+        audioSource.PlayOneShot(WalkSounds[currentSoundIndex]);
+
+        // Switch to the next sound
+        currentSoundIndex = (currentSoundIndex + 1) % WalkSounds.Count;
     }
 }
+

@@ -14,50 +14,50 @@ public class Interactor : MonoBehaviour
     public float InteractRange;
     private bool Interacting;
     private Rotatable selectedLaser;
+    void Start()
+    {
+
+    }
+
 
     void Update()
     {
-        // Check if the E key is pressed
         if (Input.GetKeyDown(KeyCode.E))
         {
-            // If not already interacting, start interacting with an object within range
-            if (!Interacting)
+            if (Interacting == false)
             {
-                Ray ray = new Ray(InteractorSource.position, InteractorSource.forward);
-                if (Physics.Raycast(ray, out RaycastHit hitInfo, InteractRange))
+                // if we are not interacting with an object we then start interacting with it.
+                Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+                if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
                 {
                     if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                     {
-                        // Start interacting with the object
-                        Interacting = true;
+                        // enables the bool to rotate the selected object.
                         interactObj.Interact();
                         selectedLaser = hitInfo.collider.gameObject.GetComponent<Rotatable>();
                         selectedLaser.Interacted();
+
+
+
                     }
+
                 }
+
+
             }
             else
             {
-                // If already interacting, stop interacting
+                // if we are interacting and we have pressed E the bool in rotatable is set back to false. 
+                // we also set the refrence to null so when u press e it doesnt have the refrence anymore.
                 selectedLaser.Interacted();
                 selectedLaser = null;
-                Interacting = false;
             }
-        }
 
-        // Check for WASD keys to stop interaction
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-        {
-            if (Interacting)
-            {
-                selectedLaser.Interacted();
-                selectedLaser = null;
-                Interacting = false;
-            }
+
+
         }
     }
 }
-
 
 
 

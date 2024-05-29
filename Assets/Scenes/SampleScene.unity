@@ -5604,12 +5604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSounds:
-  - {fileID: 8300000, guid: 0bb13a751fa042e4f91345dc82380fe4, type: 3}
-  - {fileID: 8300000, guid: 0bb13a751fa042e4f91345dc82380fe4, type: 3}
-  - {fileID: 8300000, guid: 0bb13a751fa042e4f91345dc82380fe4, type: 3}
-  - {fileID: 8300000, guid: 0bb13a751fa042e4f91345dc82380fe4, type: 3}
+  - {fileID: 8300000, guid: f7ec37fc573a3454db2dd1539a2d25cd, type: 3}
+  - {fileID: 8300000, guid: 31e441fecf211314886dd4e4c64702ae, type: 3}
   audioSource: {fileID: 951900815}
-  pos: 0
 --- !u!82 &951900815
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5853,7 +5850,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.04763198, y: -0.0000000021483566, z: 1.02446746e-10, w: 0.99886495}
+  m_LocalRotation: {x: 0.04763198, y: 0.0000000021483566, z: -1.02446746e-10, w: 0.99886495}
   m_LocalPosition: {x: 167.15996, y: 98.58777, z: -58.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8368,7 +8365,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251364176}
-  m_LocalRotation: {x: 0.047631975, y: -0.0000000021483564, z: 1.02446746e-10, w: 0.99886495}
+  m_LocalRotation: {x: 0.047631975, y: 0.0000000021483564, z: -1.02446746e-10, w: 0.99886495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
