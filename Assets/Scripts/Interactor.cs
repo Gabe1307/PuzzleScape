@@ -2,84 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractable
+interface IInteractable
 {
-    void Interact();
+    public void Interact();
 }
 
 
 public class Interactor : MonoBehaviour
 {
     public Transform InteractorSource;
-    public float InteractRange = 2.0f; // Set a default interaction range
+    public float InteractRange;
+    private bool Interacting;
     private Rotatable selectedLaser;
-    private IInteractable interactObj;
-    private bool isInteracting;
-
-    void Start()
-    {
-        selectedLaser = null;
-        interactObj = null;
-        isInteracting = false;
-    }
 
     void Update()
     {
-        // Check for start interaction
-        if (Input.GetKeyDown(KeyCode.E) && !isInteracting)
+        // Check if the E key is pressed
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            StartInteraction();
-        }
-
-        // Check for stop interaction
-        if (Input.GetKeyUp(KeyCode.E) && isInteracting)
-        {
-            StopInteracting();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        // Check for out of range condition during interaction
-        if (isInteracting && selectedLaser != null)
-        {
-            if (Vector3.Distance(InteractorSource.position, selectedLaser.transform.position) > InteractRange)
+            // If not already interacting, start interacting with an object within range
+            if (!Interacting)
             {
-                StopInteracting();
-            }
-        }
-    }
-
-    void StartInteraction()
-    {
-        // Try to start interaction if not currently interacting
-        Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-        if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
-        {
-            if (hitInfo.collider.gameObject.TryGetComponent(out interactObj))
-            {
-                selectedLaser = hitInfo.collider.gameObject.GetComponent<Rotatable>();
-                if (selectedLaser != null)
+                Ray ray = new Ray(InteractorSource.position, InteractorSource.forward);
+                if (Physics.Raycast(ray, out RaycastHit hitInfo, InteractRange))
                 {
-                    interactObj.Interact();
-                    selectedLaser.Interacted();
-                    isInteracting = true;
-                    Debug.Log("Started interacting with: " + hitInfo.collider.gameObject.name);
+                    if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                    {
+                        // Start interacting with the object
+                        Interacting = true;
+                        interactObj.Interact();
+                        selectedLaser = hitInfo.collider.gameObject.GetComponent<Rotatable>();
+                        selectedLaser.Interacted();
+                    }
                 }
             }
+            else
+            {
+                // If already interacting, stop interacting
+                selectedLaser.Interacted();
+                selectedLaser = null;
+                Interacting = false;
+            }
         }
-    }
 
-    void StopInteracting()
-    {
-        if (selectedLaser != null)
+        // Check for WASD keys to stop interaction
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
-            selectedLaser.Interacted();
-            Debug.Log("Stopped interacting with: " + selectedLaser.gameObject.name);
-            selectedLaser = null;
+            if (Interacting)
+            {
+                selectedLaser.Interacted();
+                selectedLaser = null;
+                Interacting = false;
+            }
         }
-        interactObj = null;
-        isInteracting = false;
     }
 }
+
+
+
+
+
+
 
