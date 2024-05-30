@@ -52,5 +52,11 @@ public class Rotatable : MonoBehaviour, IInteractable
             transform.Rotate(transform.right, rotation.y, Space.World);
             yield return null;
         }
+
+        void OnDestroy()
+        {
+            
+            StopAllCoroutines();
+        }
     }
 }

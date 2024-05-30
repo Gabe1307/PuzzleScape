@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; 
+using UnityEngine.SceneManagement;
 
 
 
@@ -47,8 +48,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        // Placeholder for handling player death (e.g., show game over screen)
-        Debug.Log("Player is dead!");
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3); ;
+        
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -792,6 +792,7 @@ GameObject:
   - component: {fileID: 161612098}
   - component: {fileID: 161612097}
   - component: {fileID: 161612096}
+  - component: {fileID: 161612100}
   m_Layer: 0
   m_Name: portal
   m_TagString: Untagged
@@ -807,7 +808,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161612095}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -877,6 +878,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &161612100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161612095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5ef8c7f640ab248b0f913261adab75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &170691195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2002155767409463001, guid: c1443e550f2b5864e9c9357c97e93759, type: 3}
@@ -11631,19 +11644,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1504385916782570736, guid: 4fa220b7e93dbb040a197b3f4105d8bc, type: 3}
   m_PrefabInstance: {fileID: 523585329}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1578560548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578560542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5ef8c7f640ab248b0f913261adab75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Level1: SpawnPoint
 --- !u!65 &1578560549
 BoxCollider:
   m_ObjectHideFlags: 0
