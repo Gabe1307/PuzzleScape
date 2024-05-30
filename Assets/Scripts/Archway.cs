@@ -16,7 +16,7 @@ public class Archway : MonoBehaviour
            
             
             
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +3);
         }
     }
 }

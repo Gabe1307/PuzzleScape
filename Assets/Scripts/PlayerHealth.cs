@@ -58,10 +58,10 @@ public class PlayerHealth : MonoBehaviour
         // Check if the player collides with a turret projectile
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            // Deal 20 damage to the player
+            
             TakeDamage(20);
 
-            // Destroy the turret projectile upon collision
+            
             Destroy(collision.gameObject);
         }
     }
