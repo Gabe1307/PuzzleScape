@@ -32,6 +32,7 @@ public class Rotatable : MonoBehaviour, IInteractable
 
     private void Awake()
     {
+        
         cam = Camera.main.transform;
         pressed.Enable();
         axis.Enable();
@@ -53,10 +54,6 @@ public class Rotatable : MonoBehaviour, IInteractable
             yield return null;
         }
 
-        void OnDestroy()
-        {
-            
-            StopAllCoroutines();
-        }
+        
     }
 }

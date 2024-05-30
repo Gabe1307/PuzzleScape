@@ -3409,7 +3409,7 @@ MonoBehaviour:
   laserLine: {fileID: 1484094002}
   bulletPrefab: {fileID: 1439816204641800, guid: 9446a046ef8398343b766033742f6293, type: 3}
   bulletSpawnPoint: {fileID: 2125151838}
-  playSound: {fileID: 555787540}
+  playSound: {fileID: 555787543}
   rotationSpeed: 5
   maxDistance: 10
   playerLayer:
@@ -3429,7 +3429,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.472711, y: 0.775307, z: 1.9316627}
   m_Center: {x: 0, y: 0.38765064, z: 0.22164923}
---- !u!82 &555787540
+--- !u!82 &555787543
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3439,9 +3439,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f4b309024abd75442a23838d928fdd30, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: f71cf6af65817bd4f94f220fd89a5394, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5863,7 +5863,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.04763198, y: 0.0000000021483566, z: -1.02446746e-10, w: 0.99886495}
+  m_LocalRotation: {x: 0.04763198, y: -0.0000000021483566, z: 1.02446746e-10, w: 0.99886495}
   m_LocalPosition: {x: 167.15996, y: 98.58777, z: -58.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8378,7 +8378,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251364176}
-  m_LocalRotation: {x: 0.047631975, y: 0.0000000021483564, z: -1.02446746e-10, w: 0.99886495}
+  m_LocalRotation: {x: 0.047631975, y: -0.0000000021483564, z: 1.02446746e-10, w: 0.99886495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
